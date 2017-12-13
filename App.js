@@ -12,7 +12,7 @@ const {width,height} = Dimensions.get('window');
 
 // 工具部分
 import http from './src/utils/http';
-import storage from './src/utils/storage'
+import storage from './src/utils/storage';
 
 // 引入路由
 import AppNavigator from './src/router';
@@ -20,7 +20,6 @@ import AppNavigator from './src/router';
 // 全局组件
 global.storage = storage;
 global.http = http;
-// global.Icon = Icon;
 // global.BaseStyle = BaseStyle;
 
 // 定义navigation 用于后面render函数时候完成后导出

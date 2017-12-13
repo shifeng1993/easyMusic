@@ -6,21 +6,6 @@ import {navigation} from '../../../App';
 
 // 默认配置
 axios.defaults.baseURL = httpConfig.baseUrl + (!httpConfig.port? '' : ':') + httpConfig.port + httpConfig.prefix;
-axios.defaults.timeout = 60000;
-axios.defaults.headers = {
-  'axios-header': 'axios'
-};
-
-// 超时
-const checkTimeout = async (res) => {
-  if (res && res.data === 'timeout'||res && res.data === 'timeout') {
-    await storage.clear();
-    navigation.navigate('Login');
-    return res
-  } else {
-    return res
-  }
-}
 
 // fetch感觉略麻烦，不清爽，直接引了个axios，用es7写的。
 export default class http {
@@ -39,7 +24,6 @@ export default class http {
       } else {
         res = await axios.get(url + '?' + query)
       }
-      checkTimeout(res)
       return res
     } catch (error) {
       console.warn(error);
@@ -48,7 +32,6 @@ export default class http {
   static async post(url, params) {
     try {
       let res = await axios.post(url, params)
-      checkTimeout(res)
       return res
     } catch (error) {
       console.warn(error);
@@ -57,7 +40,6 @@ export default class http {
   static async patch(url, params) {
     try {
       let res = await axios.patch(url, params)
-      checkTimeout(res)
       return res
     } catch (error) {
       console.warn(error);
@@ -66,7 +48,6 @@ export default class http {
   static async put(url, params) {
     try {
       let res = await axios.put(url, params)
-      checkTimeout(res)
       return res
     } catch (error) {
       console.warn(error);
@@ -78,7 +59,6 @@ export default class http {
      */
     try {
       let res = await axios.post(url, params)
-      checkTimeout(res)
       return res
     } catch (error) {
       console.warn(error);
@@ -92,7 +72,6 @@ export default class http {
     }
     try {
       let res = await axios.post(url, formdata, config)
-      checkTimeout(res)
       return res
     } catch (error) {
       console.warn(error);

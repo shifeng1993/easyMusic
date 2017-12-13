@@ -15,4 +15,4 @@ if (!__DEV__) {
 }
 
 // 注册，实例化启动对象
-AppRegistry.registerComponent('easyMusic', () => App);
+AppRegistry.registerComponent('easyMusic', () => Root);

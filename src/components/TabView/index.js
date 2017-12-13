@@ -4,19 +4,16 @@
  * 作者： haise
  * 邮箱： shifeng199307@gmail.com
  * props：
- *  backgroundColor: String          不是线性渐变下tabbar背景色
+ *  backgroundColor: String          tabbar背景色
  *  containerWidth: Number           容器宽度，默认为设备宽度
  *  tabItemWidth: Number             tabbar每项的宽度(新加入), emun {‘auto’ ，数字}
- *  line: false,                     tabbar线性渐变色
- *  lineColors: []                   tabbar线性渐变色值
- *  initialPage: integer                 the index of the initially selected tab, 默认0
+ *  initialPage: integer             the index of the initially selected tab, 默认0
  *  page: integer                    set selected tab
  *  tabOnPress: (index)=>{}          子传父当前tab所在的index
  */
 
 import React, {Component} from 'react';
 import {View, Text, Dimensions, Animated, ScrollView} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient'
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 const {height, width} = Dimensions.get('window');
 
@@ -30,18 +27,8 @@ class TabView extends Component {
   static defaultProps = {
     backgroundColor: 'rgba(0,0,0,0)',
     containerWidth: width,
-    line: false,
-    lineColors: [],
-    lineStart: {
-      x: 0.0,
-      y: 1.0
-    },
-    lineEnd: {
-      x: 1.0,
-      y: 1.0
-    },
     initialPage: 0,
-    onChangeTab: ()=>{}
+    onChangeTab: () => {}
   };
 
   componentWillMount() {
@@ -57,7 +44,9 @@ class TabView extends Component {
 
   onChangeTab = (item) => {
     this.setState({page: item.i})
-    this.props.onChangeTab(item);
+    this
+      .props
+      .onChangeTab(item);
   };
 
   render() {
@@ -96,99 +85,50 @@ class TabView extends Component {
             : this.props.tabItemWidth
         ]
       });
-    if (this.props.line) {
-      return (
-        <LinearGradient
-          colors={this.props.lineColors}
-          start={this.props.lineStart}
-          end={this.props.lineEnd}
-          style={{
-          height: width / 7.5,
-          width: this.props.containerWidth
-        }}>
-          <ScrollView
-            ref={(scrollView) => {
-            this._scrollView = scrollView;
-          }}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            showsVerticalScrollIndicator={false}
-            directionalLockEnabled={true}
-            bounces={false}
-            scrollsToTop={false}>
-            <View
-              style={{
-              height: width / 7.5,
-              width: !this.props.tabItemWidth
-                ? this.props.containerWidth
-                : 'auto',
-              position: 'relative',
-              flexDirection: 'row',
-              alignItems: 'center'
-            }}>
-              {tabs.map((title, index) => {
-                const isTabActive = props.activeTab === index;
-                return this._renderTabBarItem(title, index, isTabActive, props.goToPage)
-              })}
-              <Animated.View
-                style={[
-                tabUnderlineStyle, {
-                  transform: [{
-                      translateX
-                    }]
-                },
-                this.props.underlineStyle
-              ]}/>
-            </View>
-          </ScrollView>
-        </LinearGradient>
-      )
-    } else {
-      return (
-        <View
-          style={{
-          height: width / 7.5,
-          width: this.props.containerWidth,
-          backgroundColor: this.props.backgroundColor
-        }}>
-          <ScrollView
-            ref={(scrollView) => {
-            this._scrollView = scrollView;
-          }}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            showsVerticalScrollIndicator={false}
-            directionalLockEnabled={true}
-            bounces={false}
-            scrollsToTop={false}>
-            <View
-              style={{
-              position: 'relative',
-              height: width / 7.5,
-              width: !this.props.tabItemWidth
-                ? this.props.containerWidth
-                : 'auto',
-              flexDirection: 'row',
-              alignItems: 'center'
-            }}>
-              {tabs.map((title, index) => {
-                const isTabActive = props.activeTab === index;
-                return this._renderTabBarItem(title, index, isTabActive, props.goToPage)
-              })}
-              <Animated.View
-                style={[
-                tabUnderlineStyle, {
-                  transform: [{
-                      translateX
-                    }]
-                },
-                this.props.underlineStyle
-              ]}/>
-            </View>
-          </ScrollView>
-        </View>
-      )
-    }
+    return (
+      <View
+        style={{
+        height: width / 7.5,
+        width: this.props.containerWidth,
+        backgroundColor: this.props.backgroundColor
+      }}>
+        <ScrollView
+          ref={(scrollView) => {
+          this._scrollView = scrollView;
+        }}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          directionalLockEnabled={true}
+          bounces={false}
+          scrollsToTop={false}>
+          <View
+            style={{
+            position: 'relative',
+            height: width / 7.5,
+            width: !this.props.tabItemWidth
+              ? this.props.containerWidth
+              : 'auto',
+            flexDirection: 'row',
+            alignItems: 'center'
+          }}>
+            {tabs.map((title, index) => {
+              const isTabActive = props.activeTab === index;
+              return this._renderTabBarItem(title, index, isTabActive, props.goToPage)
+            })}
+            <Animated.View
+              style={[
+              tabUnderlineStyle, {
+                transform: [{
+                    translateX
+                  }]
+              },
+              this.props.underlineStyle
+            ]}/>
+          </View>
+        </ScrollView>
+      </View>
+    )
   }
   _renderTabBarItem = (title, index, isTabActive, goToPage) => {
     const color = isTabActive
@@ -198,8 +138,8 @@ class TabView extends Component {
       <Text
         key={title}
         onPress={() => {
-          goToPage(index);
-        }}
+        goToPage(index);
+      }}
         style={!this.props.tabItemWidth
         ? {
           flex: 1,

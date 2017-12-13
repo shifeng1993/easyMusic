@@ -7,19 +7,18 @@ import {
   TouchableHighlight,
   TouchableOpacity
 } from 'react-native';
+import {StatusBar, Navigator} from '../../components';
 
-
-class Home extends Component {
+class Discovery extends Component {
   constructor(props) {
     super(props);
     this.state = {
     };
   }
-
   render() {
     return (
-      <View style={{flex:1}}>
-        <Text>我是首页</Text>
+      <View style={{flex:1,alignItems: 'center',justifyContent: 'center'}}>
+        <Text>什么蛇皮布局</Text>
       </View>
     );
   }
@@ -28,4 +27,4 @@ class Home extends Component {
 const styles = StyleSheet.create({
 })
 
-export default Home;
+export default Discovery;

@@ -11,10 +11,6 @@
  *  renderLeft: function          ()=> <Text>我是左</Text>
  *  renderMiddle: function        ()=> <Text>我是中</Text>
  *  renderRight: function         ()=> <Text>我是右</Text>
- *  line: Boolen                  开启线性渐变，
- *  lineColors: Array             线性渐变颜色，
- *  lineStart: Object             线性渐变起始坐标，
- *  lineEnd: Object               线性渐变结束坐标
  */
 
 import React, {Component} from 'react';
@@ -31,7 +27,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import Orientation from 'react-native-orientation';
-import LinearGradient from 'react-native-linear-gradient';
+
 import utils from '../../utils'; // 识别iphonex
 
 const {height, width} = Dimensions.get('window');
@@ -47,19 +43,9 @@ export default class Navigator extends Component {
     title: '',
     titleColor: '#000',
     translucent: false,
-    renderLeft: null,
+    renderLeft: ()=><View/>,
     renderMiddle: null,
-    renderRight: null,
-    line: false,
-    lineColors: [],
-    lineStart: {
-      x: 0.0,
-      y: 1.0
-    },
-    lineEnd: {
-      x: 1.0,
-      y: 1.0
-    }
+    renderRight: ()=><View/>
   };
 
   render() {
@@ -87,35 +73,20 @@ export default class Navigator extends Component {
         </View>
       );
     } else {
-      if (this.props.line) {
-        return (
-          <LinearGradient
-            colors={this.props.lineColors}
-            start={this.props.lineStart} end={this.props.lineEnd}
-            style={styles.header}>
-            {renderLeft}
-            <View style={styles.headerMiddle}>
-              {renderMiddle}
-            </View>
-            {renderRight}
-          </LinearGradient>
-        );
-      } else {
-        return (
-          <View
-            style={[
-            styles.header, {
-              backgroundColor: this.props.backgroundColor
-            }
-          ]}>
-            {renderLeft}
-            <View style={styles.headerMiddle}>
-              {renderMiddle}
-            </View>
-            {renderRight}
+      return (
+        <View
+          style={[
+          styles.header, {
+            backgroundColor: this.props.backgroundColor
+          }
+        ]}>
+          {renderLeft}
+          <View style={styles.headerMiddle}>
+            {renderMiddle}
           </View>
-        );
-      }
+          {renderRight}
+        </View>
+      );
     }
   }
   _renderLeft = (props) => {
@@ -196,15 +167,18 @@ const styles = StyleSheet.create({
   },
   headerLeft: {
     flex: 1,
-    backgroundColor:'rgba(0,0,0,0)'
+    backgroundColor:'rgba(0,0,0,0)',
+    alignItems: 'center',
   },
   headerMiddle: {
     flex: 8,
     paddingLeft: 5,
-    paddingRight: 5
+    paddingRight: 5,
+    alignItems: 'center',
   },
   headerRight: {
     flex: 1,
-    backgroundColor:'rgba(0,0,0,0)'
+    backgroundColor:'rgba(0,0,0,0)',
+    alignItems: 'center',
   }
 });
