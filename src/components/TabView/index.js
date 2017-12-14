@@ -7,6 +7,10 @@
  *  backgroundColor: String          tabbar背景色
  *  containerWidth: Number           容器宽度，默认为设备宽度
  *  tabItemWidth: Number             tabbar每项的宽度(新加入), emun {‘auto’ ，数字}
+ *  tabbarPadding:Number                  tabbar样式
+ *  tabbarHeight: number                   tabbar高度
+ *  underlineStyle: {}               追加的下划线样式
+ *  underlineMargin：number                  下划线margin
  *  initialPage: integer             the index of the initially selected tab, 默认0
  *  page: integer                    set selected tab
  *  tabOnPress: (index)=>{}          子传父当前tab所在的index
@@ -15,8 +19,9 @@
 import React, {Component} from 'react';
 import {View, Text, Dimensions, Animated, ScrollView} from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
+import utils from '../../utils'
 const {height, width} = Dimensions.get('window');
-
+const newWidth = utils.getWidth(); 
 class TabView extends Component {
   constructor(props) {
     super(props);
@@ -27,6 +32,9 @@ class TabView extends Component {
   static defaultProps = {
     backgroundColor: 'rgba(0,0,0,0)',
     containerWidth: width,
+    tabbarPadding: 0,
+    underlineMargin:0,
+    tabbarHeight: newWidth / 7.5,
     initialPage: 0,
     onChangeTab: () => {}
   };
@@ -67,10 +75,12 @@ class TabView extends Component {
     const tabUnderlineStyle = {
       position: 'absolute',
       width: !this.props.tabItemWidth
-        ? (this.props.containerWidth / tabs.length)
-        : this.props.tabItemWidth,
+        ? ((this.props.containerWidth - this.props.tabbarPadding * 2) / tabs.length - this.props.underlineMargin * 2)
+        : this.props.tabItemWidth - this.props.underlineMargin * 2,
       height: 3,
-      backgroundColor: ThemeStyle.importantText_2,
+      backgroundColor: ThemeStyle.important_1,
+      marginLeft: this.props.underlineMargin,
+      marginRight: this.props.underlineMargin,
       bottom: 0
     };
     const translateX = props
@@ -81,17 +91,19 @@ class TabView extends Component {
         ],
         outputRange: [
           0, !this.props.tabItemWidth
-            ? (this.props.containerWidth / tabs.length)
+            ? ((this.props.containerWidth - this.props.tabbarPadding*2) / tabs.length)
             : this.props.tabItemWidth
         ]
       });
     return (
       <View
-        style={{
-        height: width / 7.5,
+        style={[{
+        height: this.props.tabbarHeight,
         width: this.props.containerWidth,
+        paddingLeft: this.props.tabbarPadding,
+        paddingRight: this.props.tabbarPadding,
         backgroundColor: this.props.backgroundColor
-      }}>
+      },this.props.tabbarStyle]}>
         <ScrollView
           ref={(scrollView) => {
           this._scrollView = scrollView;
@@ -105,9 +117,9 @@ class TabView extends Component {
           <View
             style={{
             position: 'relative',
-            height: width / 7.5,
+            height: this.props.tabbarHeight,
             width: !this.props.tabItemWidth
-              ? this.props.containerWidth
+              ? (this.props.containerWidth - this.props.tabbarPadding*2)
               : 'auto',
             flexDirection: 'row',
             alignItems: 'center'
@@ -132,8 +144,8 @@ class TabView extends Component {
   }
   _renderTabBarItem = (title, index, isTabActive, goToPage) => {
     const color = isTabActive
-      ? ThemeStyle.textColor
-      : ThemeStyle.subtitleColor;
+      ? ThemeStyle.important_1
+      : ThemeStyle.normal_1;
     return (
       <Text
         key={title}
@@ -143,7 +155,7 @@ class TabView extends Component {
         style={!this.props.tabItemWidth
         ? {
           flex: 1,
-          padding: width / 25,
+          padding: newWidth / 25,
           backgroundColor: 'rgba(0,0,0,0)',
           textAlign: 'center',
           color: color,
@@ -151,7 +163,7 @@ class TabView extends Component {
         }
         : {
           width: this.props.tabItemWidth,
-          padding: width / 25,
+          padding: newWidth / 25,
           backgroundColor: 'rgba(0,0,0,0)',
           textAlign: 'center',
           color: color,

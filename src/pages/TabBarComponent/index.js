@@ -52,11 +52,11 @@ export default class TabBarComponent extends Component {
     return (
       <View>
         <StatusBar
-          backgroundColor={'#d33a31'}
+          backgroundColor={ThemeStyle.important_1}
           barStyle={"light-content"}
           translucent={false}/>
         <Navigator
-          backgroundColor={'#d33a31'}
+          backgroundColor={ThemeStyle.important_1}
           renderLeft={this._navigatorLeft}
           renderMiddle={this._navigatorMiddle}
           renderRight={this._navigatorRight}
