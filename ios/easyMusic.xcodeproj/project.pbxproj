@@ -44,7 +44,7 @@
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		6FC9862B31594BB2944618C9 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6139B7F9F8FC43E59D55022A /* Feather.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		8B189D541FE1233500B8D3CA /* musicIconFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B189D221FE1233500B8D3CA /* musicIconFont.ttf */; };
+		8B709AAF1FE27FF500386F77 /* musicIconFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B709AAE1FE27FF500386F77 /* musicIconFont.ttf */; };
 		94A5EA3B001340F5ADEA97B6 /* libRCTOrientation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F78C10B2764063BD6BF146 /* libRCTOrientation.a */; };
 		ACA2F9FF29E54DA0A5CA991D /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAB4155FA80740429965E863 /* Octicons.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
@@ -361,7 +361,7 @@
 		81F78C10B2764063BD6BF146 /* libRCTOrientation.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTOrientation.a; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		87EC162279424FF6B66AD8FB /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
-		8B189D221FE1233500B8D3CA /* musicIconFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = musicIconFont.ttf; sourceTree = "<group>"; };
+		8B709AAE1FE27FF500386F77 /* musicIconFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = musicIconFont.ttf; sourceTree = "<group>"; };
 		8BD52A587E51475EB3466BDA /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		8D7480B9E43D434687119B37 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		8E284B10DF1143239665F680 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
@@ -645,7 +645,7 @@
 		9267D2DA82884D2CBFA0EB8D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8B189D221FE1233500B8D3CA /* musicIconFont.ttf */,
+				8B709AAE1FE27FF500386F77 /* musicIconFont.ttf */,
 				8D7480B9E43D434687119B37 /* Entypo.ttf */,
 				A11436B30E1A499E992D6322 /* EvilIcons.ttf */,
 				6139B7F9F8FC43E59D55022A /* Feather.ttf */,
@@ -1132,7 +1132,7 @@
 				D20F065B6C8F41D2983F638C /* Ionicons.ttf in Resources */,
 				3391C73E5A6745BA911AA677 /* MaterialCommunityIcons.ttf in Resources */,
 				15DE4A255ED943A88A787929 /* MaterialIcons.ttf in Resources */,
-				8B189D541FE1233500B8D3CA /* musicIconFont.ttf in Resources */,
+				8B709AAF1FE27FF500386F77 /* musicIconFont.ttf in Resources */,
 				ACA2F9FF29E54DA0A5CA991D /* Octicons.ttf in Resources */,
 				35DD04BC6A854CB78042E795 /* SimpleLineIcons.ttf in Resources */,
 				4E2DBA7EBE59451B8450C734 /* Zocial.ttf in Resources */,

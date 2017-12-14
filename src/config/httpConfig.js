@@ -7,7 +7,7 @@
  */
 
 export default httpConfig = {
-  baseUrl: 'https://192.168.101.58',
+  baseUrl: 'https://api.shifeng1993.com',
   port: '',
   prefix: ''
 }
