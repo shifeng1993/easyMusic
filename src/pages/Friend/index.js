@@ -7,7 +7,7 @@ import {
   TouchableHighlight,
   TouchableOpacity
 } from 'react-native';
-import {StatusBar, Navigator} from '../../components';
+import {StatusBar, Navigator,RootView} from '../../components';
 
 class Friend extends Component {
   constructor(props) {
@@ -17,9 +17,13 @@ class Friend extends Component {
   }
   render() {
     return (
-      <View style={{flex:1,alignItems: 'center',justifyContent: 'center'}}>
+      <RootView
+        style={{
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
         <Text>什么蛇皮布局</Text>
-      </View>
+      </RootView>
     );
   }
 }

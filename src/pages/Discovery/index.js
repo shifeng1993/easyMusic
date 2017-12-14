@@ -18,9 +18,8 @@ class Discovery extends Component {
   }
   render() {
     return (
-      <View
+      <RootView
         style={{
-        flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
       }}>
@@ -37,7 +36,7 @@ class Discovery extends Component {
           <View tabLabel="视频" style={{flex:1}}><Text>2</Text></View>
           <View tabLabel="电台" style={{flex:1}}><Text>3</Text></View>
         </TabView>
-      </View>
+      </RootView>
     );
   }
 }

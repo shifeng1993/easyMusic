@@ -8,6 +8,7 @@ import TabView from './TabView'
 import TextInputView from './TextInputView'
 import Toast from './Toast'
 import MusicIcon from './MusicIcon'
+import RootView from './RootView'
 
 // 导出
 export {
@@ -19,5 +20,6 @@ export {
   TabView,
   TextInputView,
   Toast,
-  MusicIcon
+  MusicIcon,
+  RootView
 };

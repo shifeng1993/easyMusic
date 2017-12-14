@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Dimensions
 } from 'react-native'
+import {RootView} from '../../components'
 
 class Login extends Component {
   constructor(props) {
@@ -17,9 +18,13 @@ class Login extends Component {
   }
   render() {
     return (
-      <View style={{flex:1}}>
+      <RootView
+        style={{
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
         <Text>我是登录页面</Text>
-      </View>
+      </RootView>
     );
   }
 }
