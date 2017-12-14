@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
-import {StatusBar, Navigator,MusicIcon} from '../../components'
+import {StatusBar, Navigator, MusicIcon} from '../../components'
 
 // 设置常量
 const {height, width} = Dimensions.get('window');
@@ -25,10 +25,19 @@ export default class TabBarComponent extends Component {
     return (
       <TouchableOpacity
         key={route.key}
-        style={styles.tabItem}
-        onPress={() => jumpToIndex(index)}>
-        <View style={styles.tabItem}>
-          {this.props.renderIcon(TabScene)}
+        activeOpacity={0.8}
+        style={[
+        styles.tabItem, {
+          padding: newWidth / 14
+        }
+      ]}
+        onPress={() => focused
+        ? null
+        : jumpToIndex(index)}>
+        <View style={[styles.tabItem]}>
+          {this
+            .props
+            .renderIcon(TabScene)}
           {/* <Text
             style={{
             ...styles.tabText,
@@ -65,33 +74,29 @@ export default class TabBarComponent extends Component {
   }
   _navigatorLeft = () => {
     return (
-      <MusicIcon
-        name="tb_article_o"
-        size={24}
-        color="#fff"
-        onPress={() => alert('are you ok?')}/>
+      <TouchableOpacity activeOpacity={0.8} style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}} onPress={() => alert('are you ok?')}>
+        <MusicIcon style={{flex:1,textAlign:'center'}} name="liebiao1" size={20} color="#fff"/>
+      </TouchableOpacity>
     )
   }
   _navigatorRight = () => {
     return (
-      <MusicIcon
-        name="tb_Picture_o"
-        size={24}
-        color="#fff"
-        onPress={() => alert('are you ok?')}/>
+      <TouchableOpacity activeOpacity={0.8} style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}} onPress={() => alert('are you ok?')}>
+        <MusicIcon style={{flex:1,textAlign:'center'}} name="sousuo2" size={20} color="#fff"/>
+      </TouchableOpacity>
     )
   }
 }
 const styles = StyleSheet.create({
   tabbarContainer: {
-    backgroundColor:'rgba(0,0,0,0)',
-    flexDirection:'row',
-    justifyContent:'space-around',
-    alignItems:'center',
-    width:width/2.5
+    backgroundColor: 'rgba(0,0,0,0)',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    width: width / 2.5
   },
-  tabItem:{
-    alignItems:'center',
-    justifyContent:'center'
-},
+  tabItem: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 });

@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {View, Dimensions, Platform, Image, Text} from 'react-native';
 import {DrawerNavigator, TabNavigator} from 'react-navigation';
-import Orientation from 'react-native-orientation';
 import {TabBarComponent} from '../pages';
 import BaseStyle from '../common/BaseStyle';
 import utils from '../utils'; // 识别iphonex
+import {MusicIcon} from '../components'
 
 // 引入页面容器
 import {My, Discovery, Friend} from '../pages';
@@ -20,9 +20,7 @@ const tabbar = TabNavigator({
     screen: My,
     navigationOptions: {
       tabBarLabel: '我的',
-      tabBarIcon: ({tintColor, focused}) => (
-        <Text style={{backgroundColor:'rgba(0,0,0,0)',color:tintColor}}>我的</Text>
-      ),
+      tabBarIcon: ({tintColor, focused}) => <MusicIcon name="yinyue" size={24} color={tintColor}/>,
       tabBarOnPress: ((e) => {
         e.jumpToIndex(e.scene.index);
       })
@@ -32,9 +30,7 @@ const tabbar = TabNavigator({
     screen: Discovery,
     navigationOptions: {
       tabBarLabel: '发现',
-      tabBarIcon: ({tintColor, focused}) => (
-        <Text style={{backgroundColor:'rgba(0,0,0,0)',color:tintColor}}>发现</Text>
-      ),
+      tabBarIcon: ({tintColor, focused}) => <MusicIcon name="wangyiyunyinlezizhi-copy" size={24} color={tintColor}/>,
       tabBarOnPress: ((e) => {
         e.jumpToIndex(e.scene.index);
       })
@@ -44,9 +40,7 @@ const tabbar = TabNavigator({
     screen: Friend,
     navigationOptions: {
       tabBarLabel: '朋友',
-      tabBarIcon: ({tintColor, focused}) => (
-        <Text style={{backgroundColor:'rgba(0,0,0,0)',color:tintColor}}>朋友</Text>
-      ),
+      tabBarIcon: ({tintColor, focused}) => <MusicIcon name="pengyou1" size={24} color={tintColor}/>,
       tabBarOnPress: ((e) => {
         e.jumpToIndex(e.scene.index);
       })
@@ -68,7 +62,7 @@ const tabbar = TabNavigator({
     // label和icon的背景色 不活跃状态下（未选中） ios
     inactiveBackgroundColor: 'rgba(0,0,0,0)',
     // label和icon的前景色 不活跃状态下(未选中)
-    inactiveTintColor: '#e58983',
+    inactiveTintColor: '#e58983'
   }
 });
 

@@ -8,18 +8,18 @@ import {StatusBar, Navigator, Toast} from './src/components';
 import ThemeStyle from './src/common/ThemeStyle';
 import BaseStyle from './src/common/BaseStyle'
 
-const {width,height} = Dimensions.get('window');
-
 // 工具部分
 import http from './src/utils/http';
 import storage from './src/utils/storage';
+import utils from './src/utils'
 
 // 引入路由
 import AppNavigator from './src/router';
 
-// 全局组件
+// 全局变量
 global.storage = storage;
 global.http = http;
+global.newWidth = utils.getWidth();  // 获取一个定量宽度，不管设备怎么旋转，
 // global.BaseStyle = BaseStyle;
 
 // 定义navigation 用于后面render函数时候完成后导出
@@ -34,7 +34,7 @@ const navReducer = (state, action) => {
 class App extends Component {
   componentWillMount() {
     // 禁止横屏
-    Orientation.lockToPortrait();
+    // Orientation.lockToPortrait();
   }
   /*处理安卓硬件返回按键 开始*/
   componentDidMount() {
@@ -93,7 +93,7 @@ class App extends Component {
              ref='Toast'
              style={{backgroundColor:'#38506d',borderRadius:5}}
              position='bottom'
-             positionValue={width/3}
+             positionValue={newWidth/3}
              fadeInDuration={600}
              fadeOutDuration={600}
              opacity={0.95}

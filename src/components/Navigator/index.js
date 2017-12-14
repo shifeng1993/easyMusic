@@ -27,11 +27,12 @@ import {
   TouchableOpacity
 } from 'react-native';
 import Orientation from 'react-native-orientation';
+import utils from '../../utils';
 
-import utils from '../../utils'; // 识别iphonex
+const {width, height} = Dimensions.get('window');
 
-const {height, width} = Dimensions.get('window');
 const isIphoneX = utils.isIphoneX();
+const newWidth = utils.getWidth(); 
 
 export default class Navigator extends Component {
   constructor(props) {
@@ -140,11 +141,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 10,
     position: 'relative',
-    height: (Orientation.getInitialOrientation() === 'PORTRAIT')
-      ? (width / 8)
-      : (((Orientation.getInitialOrientation() === 'PORTRAITUPSIDEDOWN')
-        ? (width / 8)
-        : (height / 8))),
+    height: newWidth/8,
     alignItems: 'center'
   },
   header1: {
@@ -157,11 +154,7 @@ const styles = StyleSheet.create({
         ? 44
         : 20)
       : StatusBar.currentHeight,
-    height: (Orientation.getInitialOrientation() === 'PORTRAIT')
-      ? (width / 8)
-      : (((Orientation.getInitialOrientation() === 'PORTRAITUPSIDEDOWN')
-        ? (width / 8)
-        : (height / 8))),
+    height: newWidth/8,
     alignItems: 'center',
     zIndex: 1
   },

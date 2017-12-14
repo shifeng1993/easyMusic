@@ -15,9 +15,9 @@ import React, {Component} from 'react';
 import {StyleSheet, View, Text, Platform, Dimensions, ActivityIndicator} from 'react-native';
 import { UltimateListView, UltimateRefreshView } from 'react-native-ultimate-listview'
 import {LoadingSpinner} from "../index";
+import utils from '../../utils';
 
-// 常量设置
-const {width, height} = Dimensions.get('window');
+const newWidth = utils.getWidth(); 
 
 class list extends Component {
   constructor(props) {
@@ -63,8 +63,8 @@ class list extends Component {
         refreshableTitlePull={'下拉刷新'}
         refreshableTitleRelease={'释放立即刷新'}
         refreshableTitleRefreshing={'正在加载...'}
-        refreshViewStyle={Platform.OS === 'ios' ? {height: height/8, top: -height/8} : {height: height/10}}
-        refreshViewHeight={Platform.OS === 'ios' ? height/8 : height/10}
+        refreshViewStyle={Platform.OS === 'ios' ? {height: newWidth/4.5, top: -newWidth/4.5} : {height: newWidth/5.625}}
+        refreshViewHeight={Platform.OS === 'ios' ? newWidth/4.5 : newWidth/5.625}
         arrowImageStyle={{width: 20, height: 20, resizeMode: 'contain'}} //箭头图标
         // 设置日期
         displayDate={true}
@@ -77,11 +77,11 @@ class list extends Component {
   _renderPaginationFetchingView = () => {
     if(Platform.OS === 'ios'){
       return (
-        <LoadingSpinner height={height * 0.2} text="正在加载，请稍候..."/>
+        <LoadingSpinner height={newWidth/2.8125} text="正在加载，请稍候..."/>
       )
     } else {
       return (
-        <LoadingSpinner height={height * 0.2} text="正在加载，请稍候..."/>
+        <LoadingSpinner height={newWidth/2.8125} text="正在加载，请稍候..."/>
       )
     }
   };

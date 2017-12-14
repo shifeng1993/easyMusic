@@ -12,8 +12,9 @@
  */
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Dimensions} from 'react-native';
+import utils from '../../utils';
 
-const {height, width} = Dimensions.get('window');
+const width = utils.getWidth(); 
 
 export default class Button extends Component {
   constructor(props) {
