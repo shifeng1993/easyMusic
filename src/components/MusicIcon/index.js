@@ -14,4 +14,4 @@ const glyphMap = {
 
 const MusicIcon = (Platform.OS === 'ios') ? createIconSet(glyphMap, 'iconfont') : createIconSet(glyphMap, 'iconfont', 'musicIconFont.ttf');
 
-export default MusicIcon;
+// export default MusicIcon;

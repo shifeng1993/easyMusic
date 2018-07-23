@@ -1,7 +1,6 @@
 # OSX
 #
 .DS_Store
-.vscode
 
 # Xcode
 #
@@ -31,6 +30,9 @@ build/
 local.properties
 *.iml
 
+# vscode
+.vscode/
+
 # node.js
 #
 node_modules/
@@ -52,3 +54,6 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
+
+# Bundle artifact
+*.jsbundle

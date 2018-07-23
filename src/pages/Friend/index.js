@@ -22,7 +22,7 @@ class Friend extends Component {
         alignItems: 'center',
         justifyContent: 'center'
       }}>
-        <Text>什么蛇皮布局</Text>
+        <Text>Friend</Text>
       </RootView>
     );
   }

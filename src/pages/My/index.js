@@ -19,7 +19,7 @@ class My extends Component {
   render() {
     return (
       <RootView style={{alignItems: 'center',justifyContent: 'center'}}>
-        <Text>什么蛇皮布局</Text>
+        <Text>My</Text>
       </RootView>
     );
   }

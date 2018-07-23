@@ -1,78 +1,93 @@
-import axios from 'axios';
 import qs from 'querystring';
+import RNFetchBlob from 'rn-fetch-blob';
 import httpConfig from '../../config/httpConfig.js';
-import storage from '../storage';
-import {navigation} from '../../../App';
 
-// 默认配置
-axios.defaults.baseURL = httpConfig.baseUrl + (!httpConfig.port? '' : ':') + httpConfig.port + httpConfig.prefix;
+const baseUrl = `${httpConfig.baseUrl}${!httpConfig.port?'':':'}${httpConfig.portv}${!httpConfig.prefix?'':'/'}${httpConfig.prefix}`
 
-// fetch感觉略麻烦，不清爽，直接引了个axios，用es7写的。
+// 序列化成axios的res结构
+const axiosResponse = async(res) => {
+  if (!res) {
+    return null
+  };
+  try {
+    let newres = {};
+    newres.status = res.respInfo.status;
+    newres.url = res.respInfo.redirects[0];
+    newres.headers = res.respInfo.headers;
+    if(res.respInfo.status === 200 || res.respInfo.status === 304) {
+      newres.data = (res.data === '') ? res.data : await JSON.parse(res.data);
+    } else {
+      newres.data = res.data;
+    }
+    return newres;
+  } catch (error) {
+    console.warn(error);
+  }
+};
+
+
 export default class http {
-  static async get(url, params) {
-    /**
-     * params{
-     *  goods：id，
-     *  name：string
-     * } ==> ?goods=id&name=string
-     */
+  static async get(url, params, headers, callback) {
     try {
       let query = await qs.stringify(params)
-      let res = null;
-      if (!params) {
-        res = await axios.get(url)
-      } else {
-        res = await axios.get(url + '?' + query)
+      let task = null;
+      if (!headers) {
+        headers = {};
       }
-      return res
+      if (!params) {
+        // 如果没有query形式参数
+        task = RNFetchBlob.config({trusty : true}).fetch('GET', `${baseUrl}${url}`, headers)
+      } else {
+        // 如果有query形式参数
+        task = RNFetchBlob.config({trusty : true}).fetch('GET', `${baseUrl}${url}?${query}`, headers);
+      }
+      if(callback){
+        callback(task.cancel);
+      }
+      if (typeof headers !== "object") {
+        headers(task.cancel);
+      }
+      const res = await task;
+      checkTimeout(res);
+      let newres = await axiosResponse(res); // 为了保持与pc端请求代码的兼容性，进行axios库返回代码格式的序列化
+      return newres;
     } catch (error) {
       console.warn(error);
     }
   }
-  static async post(url, params) {
+  static async post(url, params, headers, callback) {
     try {
-      let res = await axios.post(url, params)
-      return res
+      if (!headers) {
+        headers = {};
+      }
+      headers['Accept'] = 'application/json';
+      headers['Content-Type'] = 'application/json';
+      const task = RNFetchBlob.config({trusty : true}).fetch('POST', `${baseUrl}${url}`, headers, JSON.stringify(params));
+      if(callback){
+        callback(task.cancel);
+      }
+      if (typeof headers !== "object") {
+        headers(task.cancel);
+      }
+      const res = await task;
+      checkTimeout(res);
+      let newres = await axiosResponse(res); // 为了保持与pc端请求代码的兼容性，进行axios库返回代码格式的序列化
+      return newres;
     } catch (error) {
       console.warn(error);
     }
   }
-  static async patch(url, params) {
+  static async fetchImg(url, ext) {
     try {
-      let res = await axios.patch(url, params)
-      return res
-    } catch (error) {
-      console.warn(error);
-    }
-  }
-  static async put(url, params) {
-    try {
-      let res = await axios.put(url, params)
-      return res
-    } catch (error) {
-      console.warn(error);
-    }
-  }
-  static async delete(url, params) {
-    /**
-     * params默认为数组
-     */
-    try {
-      let res = await axios.post(url, params)
-      return res
-    } catch (error) {
-      console.warn(error);
-    }
-  }
-  static async upload(url, formdata) {
-    const config = {
-      headers:{
-        'Content-Type':'multipart/form-data',
+      if (!ext) {
+        ext = 'jpg'
       } 
-    }
-    try {
-      let res = await axios.post(url, formdata, config)
-      return res
+      res = await RNFetchBlob.config({trusty : true,fileCache:true,appendExt : ext}).fetch('GET', `${baseUrl}${url}`)
+      if(res.respInfo.status === 200 || res.respInfo.status === 304) {
+        return res.path();
+      } else {
+        return null
+      }
     } catch (error) {
       console.warn(error);
     }

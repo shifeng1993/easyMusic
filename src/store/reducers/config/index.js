@@ -1,9 +1,13 @@
-import * as types from '../../actions/actionTypes';
-import configState from '../../states/config';
+import {SET_THEME} from '../../actions/actionTypes';
 
-export default function config(state = configState, action) {
+let configState = {
+  // 主题
+  theme: 'light'
+}
+
+export default config = (state = configState, action) => {
   switch (action.type) {
-    case types.SET_THEME:
+    case SET_THEME:
       return {
         ...state,
         userinfo: action.data

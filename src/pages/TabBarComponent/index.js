@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
-import {StatusBar, Navigator, MusicIcon} from '../../components'
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import {StatusBar, Navigator} from '../../components'
 
 // 设置常量
 const {height, width} = Dimensions.get('window');
@@ -11,9 +12,8 @@ export default class TabBarComponent extends Component {
     this.state = {};
   }
   renderItem = (route, index) => {
-    const {navigation, jumpToIndex} = this.props;
-
-    const focused = index === navigation.state.index;
+    // const {navigation, jumpTo} = this.props;
+    // const focused = index === navigation.state.index;
     const color = focused
       ? this.props.activeTintColor
       : this.props.inactiveTintColor;
@@ -33,7 +33,7 @@ export default class TabBarComponent extends Component {
       ]}
         onPress={() => focused
         ? null
-        : jumpToIndex(index)}>
+        : null}>
         <View style={[styles.tabItem]}>
           {this
             .props
@@ -65,24 +65,24 @@ export default class TabBarComponent extends Component {
     );
   }
   _navigatorMiddle = () => {
-    const routes = this.props.navigation.state.routes;
+    // const routes = this.props.navigation.state.routes;
     return (
       <View style={styles.tabbarContainer}>
-        {routes && routes.map((route, index) => this.renderItem(route, index))}
+        {/* {routes && routes.map((route, index) => this.renderItem(route, index))} */}
       </View>
     );
   }
   _navigatorLeft = () => {
     return (
       <TouchableOpacity activeOpacity={0.8} style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}} onPress={() => alert('are you ok?')}>
-        <MusicIcon style={{flex:1,textAlign:'center'}} name="liebiao1" size={20} color="#fff"/>
+        <Icon style={{flex:1,textAlign:'center'}} name="list-ul" size={20} color="#fff"/>
       </TouchableOpacity>
     )
   }
   _navigatorRight = () => {
     return (
       <TouchableOpacity activeOpacity={0.8} style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}} onPress={() => alert('are you ok?')}>
-        <MusicIcon style={{flex:1,textAlign:'center'}} name="sousuo2" size={20} color="#fff"/>
+        <Icon style={{flex:1,textAlign:'center'}} name="search" size={20} color="#fff"/>
       </TouchableOpacity>
     )
   }
