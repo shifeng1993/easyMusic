@@ -9,9 +9,9 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {My} from '../pages';
 import Find from './Find';
 import Video from './Video';
+
 // 设置常量
 const {height, width} = Dimensions.get('window');
-const isIphoneX = utils.isIphoneX()
 
 /* ****************************** tabbar ****************************** */
 const tabbar = createMaterialTopTabNavigator({
