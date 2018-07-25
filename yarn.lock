@@ -4212,7 +4212,7 @@ react-native-tab-view@^0.0.77:
   dependencies:
     prop-types "^15.6.0"
 
-react-native-tab-view@^1.0.0:
+react-native-tab-view@^1.0.0, react-native-tab-view@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-1.0.2.tgz#66e0bc6d38a227ed2b212e3a256b7902f6ce02ed"
   dependencies:
@@ -4300,7 +4300,7 @@ react-navigation-redux-helpers@^2.0.3:
   dependencies:
     invariant "^2.2.2"
 
-react-navigation-tabs@0.5.1:
+react-navigation-tabs@0.5.1, react-navigation-tabs@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/react-navigation-tabs/-/react-navigation-tabs-0.5.1.tgz#ed33bce3a3e21b92646700de25bd94b8fc570371"
   dependencies:

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
+import {View, Dimensions, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {StatusBar, Navigator} from '../../components'
+import Middle from './Middle';
 
 // 设置常量
 const {height, width} = Dimensions.get('window');
@@ -11,43 +12,7 @@ export default class TabBarComponent extends Component {
     super(props);
     this.state = {};
   }
-  renderItem = (route, index) => {
-    // const {navigation, jumpTo} = this.props;
-    // const focused = index === navigation.state.index;
-    const color = focused
-      ? this.props.activeTintColor
-      : this.props.inactiveTintColor;
-    let TabScene = {
-      focused: focused,
-      route: route,
-      tintColor: color
-    };
-    return (
-      <TouchableOpacity
-        key={route.key}
-        activeOpacity={0.8}
-        style={[
-        styles.tabItem, {
-          padding: newWidth / 14
-        }
-      ]}
-        onPress={() => focused
-        ? null
-        : null}>
-        <View style={[styles.tabItem]}>
-          {this
-            .props
-            .renderIcon(TabScene)}
-          {/* <Text
-            style={{
-            ...styles.tabText,
-            marginTop: 10,
-            color
-          }}>{this.props.getLabel(TabScene)}</Text> */}
-        </View>
-      </TouchableOpacity>
-    );
-  };
+  
   render() {
     return (
       <View>
@@ -65,11 +30,9 @@ export default class TabBarComponent extends Component {
     );
   }
   _navigatorMiddle = () => {
-    // const routes = this.props.navigation.state.routes;
+    const props = this.props
     return (
-      <View style={styles.tabbarContainer}>
-        {/* {routes && routes.map((route, index) => this.renderItem(route, index))} */}
-      </View>
+      <Middle {...props}/>  
     );
   }
   _navigatorLeft = () => {
@@ -87,16 +50,3 @@ export default class TabBarComponent extends Component {
     )
   }
 }
-const styles = StyleSheet.create({
-  tabbarContainer: {
-    backgroundColor: 'rgba(0,0,0,0)',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    width: width / 2.5
-  },
-  tabItem: {
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});

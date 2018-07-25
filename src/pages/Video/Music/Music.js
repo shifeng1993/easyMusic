@@ -8,10 +8,10 @@ import {
   TouchableHighlight,
   TouchableOpacity
 } from 'react-native';
-import {StatusBar, Navigator, RootView} from '../../components';
-import Theme from '../../common/ThemeStyle';
+import {StatusBar, Navigator, RootView} from '../../../components';
+// import Theme from '../../common/ThemeStyle';
 
-class Discovery extends Component {
+class Music extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -23,7 +23,7 @@ class Discovery extends Component {
         alignItems: 'center',
         justifyContent: 'center'
       }}>
-       <Text>Discovery</Text>
+       <Text>Music</Text>
       </RootView>
     );
   }
@@ -31,4 +31,4 @@ class Discovery extends Component {
 
 const styles = StyleSheet.create({})
 
-export default Discovery;
+export default Music;

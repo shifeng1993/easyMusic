@@ -1,19 +1,20 @@
 import React, {Component} from 'react';
 import {
-  ScrollView,View,
+  ScrollView,
+  View,
   Text,
   StyleSheet,
   Dimensions,
   TouchableHighlight,
   TouchableOpacity
 } from 'react-native';
-import {StatusBar, Navigator,RootView} from '../../components';
+import {StatusBar, Navigator, RootView} from '../../../components';
+import Theme from '../../../common/ThemeStyle';
 
-class Friend extends Component {
+class Showtime extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
   render() {
     return (
@@ -22,13 +23,12 @@ class Friend extends Component {
         alignItems: 'center',
         justifyContent: 'center'
       }}>
-        <Text>Friend</Text>
+       <Text>Showtime</Text>
       </RootView>
     );
   }
 }
 
-const styles = StyleSheet.create({
-})
+const styles = StyleSheet.create({})
 
-export default Friend;
+export default Showtime;
